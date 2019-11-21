@@ -34,9 +34,14 @@ ax = sns.scatterplot(x="x_values",
                     y="y_values",
                     data=df_wijk_coords[['x_values','y_values']], 
                     s=1000, 
-                    hue=df['hue_values'])
-
-
+                    hue=df['hue_values'],
+                    alpha=0.7,
+                    c=color, 
+                    edgecolors='black')
+# annotate values
+for i in zip(text_values, x_values, y_values):
+    plt.annotate(i[0], xy=i[1:3])
+    
 # basic 3D scatter plot
 fig = plt.figure(figsize=([20,20]))
 ax = fig.add_subplot(111, projection='3d')
