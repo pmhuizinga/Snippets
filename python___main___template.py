@@ -20,7 +20,6 @@ def read_settings(config_location: str):
 	
 class MainProcessClassName:
     """
-    Class CurveManager.
     This class is used to process the data.
     """
 
@@ -37,7 +36,7 @@ class MainProcessClassName:
 
     def run(self):
         """
-        Processes the curve data.
+        Processes the data.
 
         :return: None
         """
@@ -61,7 +60,7 @@ def main(args=None):
                             required=True)
         args = parser.parse_args()
 
-    # read curve setting
+    # read setting
     settings = read_settings(args.config_path)
 
     # setup the logger, use the configuration path to load the settings.
@@ -70,9 +69,9 @@ def main(args=None):
     try:
         logger.info('Starting program')
 
-        curve_program = MainProcessClassName(logger, curve_settings)
+        program = MainProcessClassName(logger, settings)
 
-        curve_program.run()
+        program.run()
 
     except Exception as _:
         logger.exception("Unexpected error")
