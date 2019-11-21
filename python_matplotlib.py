@@ -21,11 +21,11 @@ plt.show()
 # s = size
 # hue = distiction value
 fig, ax = plt.subplots(figsize=(20,20))
-ax = sns.scatterplot(x="x_column_name",
-                    y="y_column_name",
-                    data=df_wijk_coords[['x_column_name','y_column_name']], 
+ax = sns.scatterplot(x="x_values",
+                    y="y_values",
+                    data=df_wijk_coords[['x_values','y_values']], 
                     s=1000, 
-                    hue=df['hue_column_name'])
+                    hue=df['hue_values'])
 
 # basic 3D scatter plot
 fig = plt.figure(figsize=([20,20]))
