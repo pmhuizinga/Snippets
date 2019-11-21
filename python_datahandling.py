@@ -17,4 +17,6 @@ list_of_unique_items = df['column'].unique().tolist()
 df.info()
 df.describe()
 
-df['column'].fillna('fill value', inplace=True)  # fill empty values
+# WRANGLING
+# fill empty values
+df['column'].fillna('fill value', inplace=True)
