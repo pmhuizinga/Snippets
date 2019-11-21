@@ -9,3 +9,6 @@ with urllib.request.urlopen(url) as file:
     a = json.loads(file.read())
     df = pd.DataFrame.from_dict(a)
     
+# read html 
+df = pd.read_html('http://url.html',skiprows=4, header=0, decimal=',', thousands='.')
+
