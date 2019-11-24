@@ -1,5 +1,5 @@
 # DIRECTORY STRUCTURE
-# main_folder/project.py : start file
+# main_folder/project.py : flask application instance
 
 # main_folder/app/__init__.py : flask init file
 # main_folder/app/routes.py : contains routing
@@ -8,5 +8,8 @@
 
 # main_folder/app/templates/.. : contains html files
 
-RUN FLASK, in terminal run: set FLASK_APP=project.py
+# set flask app (in terminal): set FLASK_APP=project.py
+# run flask app (in termina): flask run
+
+
 
