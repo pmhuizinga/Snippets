@@ -15,6 +15,8 @@ plt.ylabel('y label')
 plt.grid(True)
 plt.legend()
 plt.text(x_value, y_value, 'Text value') # add text in graph
+mean_series = pd.Series(np.repeat(df['column'].mean(), df.shape[0]))
+plt.plot(df.index, mean_series, label='average') # plot mean in graph
 plt.axvline(np.quantile(df.index.values, .50), color='orange', label='label') # create vertical line in graph (2nd percentile)
 plt.savefig('filename.png')
 plt.show()
