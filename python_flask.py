@@ -12,4 +12,12 @@
 # run flask app (in termina): flask run
 
 
+# ADD DATABASE MIGRATION 
+# requires a models.py file with tables as class
+# import flask-migrate
+# In terminal:
+# create migrations dir: flask db init 
+# migrate: flask db migrate -m "<table name> table"
+# upgrade: flask db upgrade
+
 
