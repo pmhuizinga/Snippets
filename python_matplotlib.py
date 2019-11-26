@@ -5,8 +5,9 @@ import matplotlib.pyplot as plt
 import seaborn as sns; sns.set()
 import numpy as np
 
-# set facecolor (background color)
-fig.patch.set_facecolor('xkcd:gray')
+# background colors
+fig.patch.set_facecolor('xkcd:gray') # graph background
+ax1.set_facecolor('xkcd:salmon') # axis part background
 
 # line plot
 plt.figure(figsize=(20,10))
