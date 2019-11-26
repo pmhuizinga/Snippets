@@ -5,6 +5,9 @@ import matplotlib.pyplot as plt
 import seaborn as sns; sns.set()
 import numpy as np
 
+# set facecolor (background color)
+fig.patch.set_facecolor('xkcd:gray')
+
 # line plot
 plt.figure(figsize=(20,10))
 plt.plot(df['x_values'], df['y_values'])
