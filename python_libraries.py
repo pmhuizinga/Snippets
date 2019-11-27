@@ -1,5 +1,5 @@
 import pandas as pd						  data handling/wrangling
-import numpy as np						    linear algebra, etc				
+import numpy as np						  linear algebra, etc				
 import os						            file/folder looping and more
 from pathlib import Path
 import sqlite3 					        database
