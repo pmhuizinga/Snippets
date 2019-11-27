@@ -1,6 +1,6 @@
 import pandas as pd						  data handling/wrangling
-imort numpy as np						    linear algebra, etc				
-imprt os						            file/folder looping and more
+import numpy as np						    linear algebra, etc				
+import os						            file/folder looping and more
 from pathlib import Path
 import sqlite3 					        database
 import sqlalchemy					      database connections
