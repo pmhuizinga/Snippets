@@ -20,3 +20,14 @@ df.describe()
 # WRANGLING
 # fill empty values
 df['column'].fillna('fill value', inplace=True)
+
+# merge both dataframes
+df_a = pd.merge(df_b, df_c,
+                      left_on=['column df_b'],
+                      right_on=['column df_c'])
+# Pivot
+# melt dataframe
+df = pd.melt(df,id_vars=['CADIS_PORTFOLIO_GROUP_CODE', 'AS_OF_DATE'],
+                     value_vars=[‘col1’,’col2’],
+                     var_name='TENOR',
+                     value_name='VALUE')
