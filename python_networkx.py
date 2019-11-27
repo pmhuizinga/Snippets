@@ -30,3 +30,12 @@ plt.show()
 # alternative way to 'populate' G using a dataframe:
 G = nx.from_pandas_dataframe(df=bd_sub, source='Source', target='Target', edge_attr='gender', 
                             create_using=nx.Graph())
+
+# shortest path sample
+import networkx as nx
+G = nx.Graph()
+G.add_edge('A', 'B', weight=4)
+G.add_edge('B', 'D', weight=2)
+G.add_edge('A', 'C', weight=3)
+G.add_edge('C', 'D', weight=4)
+nx.shortest_path(G, 'A', 'D', weight='weight')
