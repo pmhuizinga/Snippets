@@ -52,7 +52,17 @@ sql = "SELECT * FROM <table>"
 
 df = pd.read_sql(sql, conn)
 
+# read XML
+from pathlib import Path
+import xml.etree.cElementTree as et
 
+file = Path(r'filepath\filename.xml')
+fund_data = et.parse(file)
+root = fund_data.getroot()
+# get all xml tags
+list = [elem.tag for elem in root.iter()]
+# get unique xml tags
+set(list)
 
 
 
