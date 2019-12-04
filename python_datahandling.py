@@ -10,6 +10,9 @@ df['timecolumn'] = pd.to_datetime(df['timecolumn'],format= '%H:%M' ).dt.time
 # extract hour value in column
 df_scan['uur'] = df['datecolumn'].dt.hour
 
+# NUMERIC
+pd.to_numeric(df["column"], errors='coerce')
+
 # INFO
 nr_of_unique_times = df['column'].nunique()
 list_of_unique_items = df['column'].unique().tolist()
