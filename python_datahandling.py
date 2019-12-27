@@ -9,6 +9,8 @@ df['datecolumn'] = pd.to_datetime(df['datecolumn'])
 df['timecolumn'] = pd.to_datetime(df['timecolumn'],format= '%H:%M' ).dt.time
 # extract hour value in column
 df_scan['uur'] = df['datecolumn'].dt.hour
+# all workingdays
+all_working_days = [d.strftime("%Y-%m-%d") for d in pd.date_range(start='1/1/2019', end='1/08/2019').to_datetime().date if d.isoweekday() <= 5]
 
 # NUMERIC
 pd.to_numeric(df["column"], errors='coerce')
