@@ -81,10 +81,15 @@ for nr, entity in enumerate([list]):
     ax[row][column].set_title(entity.upper())
 
 #------------------------------------------------------------------
-# create stacked bar chart
+# create stacked bar chart with scaled values
 N = df['column'].nunique()  # source for x axis
 ind = np.arange(N)    # the x locations for the groups
 width = .95
+
+# rescale market values to percentage of total
+df1 = df_source.groupby(['column1','column2']).agg({'value column': 'sum'})
+df = df1.groupby(level=0).apply(lambda x: 100 * x / float(x.sum()))
+df.reset_index(inplace=True)
 
 for index, variable in enumerate(df['column to be stacked'].unique()):
     if index == 0:
