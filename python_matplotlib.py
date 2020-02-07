@@ -10,7 +10,6 @@ fig.patch.set_facecolor('xkcd:gray') # graph background
 ax1.set_facecolor('xkcd:salmon') # axis part background
 
 #------------------------------------------------------------------
-
 # line plot
 plt.figure(figsize=(20,10))
 plt.plot(df['x_values'], df['y_values'])
@@ -28,7 +27,6 @@ plt.savefig('filename.png')
 plt.show()
 
 #------------------------------------------------------------------
-
 # basic bar chart
 plt.figure(figsize=(20,10))
 plt.bar(df['x_values'], df['y_values'])
@@ -81,3 +79,23 @@ for nr, entity in enumerate([list]):
 
     ax[row][column].bar(x,y)
     ax[row][column].set_title(entity.upper())
+
+#------------------------------------------------------------------
+# create stacked bar chart
+N = df['column'].nunique()  # source for x axis
+ind = np.arange(N)    # the x locations for the groups
+width = .95
+
+for index, variable in enumerate(df['column to be stacked'].unique()):
+    if index == 0:
+        plt.bar(ind, df[df['column to be stacked'] == variable]['value column'], width=width, label=variable)
+        t = df[df['column'] == at]['totalmarketvaluebase'] # create list of values
+    else:
+        plt.bar(ind, df[df['column to be stacked'] == variable]['value column'], bottom=t, width=width, label=variable)
+        t = [c + d for c, d in zip(t, df[df['column to be stacked'] == variable]['value column'])] # add values from value column
+
+plt.ylabel('y - label')
+plt.xticks(ind, pd.to_datetime(df['date column']).dt.date.unique()) # only relevant for date axis
+plt.xticks(rotation=90)
+plt.legend()
+plt.show()    
