@@ -53,6 +53,7 @@ sql = "SELECT * FROM <table>"
 df = pd.read_sql(sql, conn)
 
 # read XML
+# also look at beautiful soup for reading XML!!
 from pathlib import Path
 import xml.etree.cElementTree as et
 
