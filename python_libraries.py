@@ -13,3 +13,5 @@ import networkx					        graph database
 import seaborn as sms					  charts, plotting
 import sklearn					        machine learning
 import streamlit                interactive charts
+from pprint import pprint       pretty print
+from difflib import Differ      for file comparison
