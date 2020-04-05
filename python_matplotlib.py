@@ -104,3 +104,13 @@ plt.xticks(ind, pd.to_datetime(df['date column']).dt.date.unique()) # only relev
 plt.xticks(rotation=90)
 plt.legend()
 plt.show()    
+
+#------------------------------------------------------------------
+# subplots
+plt.subplot(2, 1, 1)
+plt.plot(<data>)
+
+plt.subplot(2, 1, 2)
+plt.plot(<more data>)
+
+plt.show()
