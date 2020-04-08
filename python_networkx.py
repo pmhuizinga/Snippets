@@ -1,6 +1,8 @@
 import networkx as nx
 import pandas as pd
 import matplotlib.pyplot as plt
+import operator
+import warnings
 
 # create sample data
 node_list = ['A', 'B', 'C', 'D']
@@ -39,3 +41,28 @@ G.add_edge('B', 'D', weight=2)
 G.add_edge('A', 'C', weight=3)
 G.add_edge('C', 'D', weight=4)
 nx.shortest_path(G, 'A', 'D', weight='weight')
+
+# read from file
+data = nx.read_edgelist('g:/networkx_test.txt', create_using=nx.Graph(), nodetype=str)
+
+# spring layout
+pos = nx.spring_layout(data)
+warnings.filterwarnings('ignore')
+plt.style.use('fivethirtyeight')
+plt.rcParams['figure.figsize'] = (20, 15)
+plt.axis('off')
+nx.draw_networkx(data, pos, with_labels=False, node_size=15)
+plt.show()
+
+# pagerank
+pagerank = nx.pagerank(data)
+sorted_pagerank = sorted(pagerank.items(), key=operator.itemgetter(1), reverse=True)
+
+# circular layout
+pos = nx.circular_layout(G)
+warnings.filterwarnings('ignore')
+plt.style.use('fivethirtyeight')
+plt.rcParams['figure.figsize'] = (40, 40)
+plt.axis('off')
+nx.draw_networkx(G, pos, with_labels=True, font_size=6, node_size=12, alpha=0.5) 
+plt.show()
