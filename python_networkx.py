@@ -66,3 +66,7 @@ plt.rcParams['figure.figsize'] = (40, 40)
 plt.axis('off')
 nx.draw_networkx(G, pos, with_labels=True, font_size=6, node_size=12, alpha=0.5) 
 plt.show()
+
+# discover cycles in dataset
+Gd=nx.from_pandas_dataframe(df_unpivot, source='source', target='target', create_using=nx.DiGraph())
+print(nx.find_cycle(Gd))
