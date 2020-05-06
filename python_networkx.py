@@ -70,3 +70,31 @@ plt.show()
 # discover cycles in dataset
 Gd=nx.from_pandas_dataframe(df_unpivot, source='source', target='target', create_using=nx.DiGraph())
 print(nx.find_cycle(Gd))
+
+# directed graph
+data = nx.DiGraph(directed=True)
+
+data.add_nodes_from(['A','B'], type='test nodes')
+data.add_nodes_from(['D','E'], type='more test nodes')
+data.add_edges_from([('A', 'B')], type='test edge')
+
+pos = nx.circular_layout(data)
+plt.axis('off')
+
+node_attrs = nx.get_node_attributes(data, 'type')
+node_colors = []
+for node, attr in node_attrs.items():
+    if attr == 'test nodes':
+        color = 'blue'
+    elif attr == 'more test nodes':
+        color = 'red'
+
+    node_colors.append(color)
+
+edge_labels=dict([((u,v,),d['type']) for u,v,d in data.edges(data=True)])
+    
+nx.draw_networkx_nodes(data, pos,  node_color=node_colors, node_size=300, font_size=12, alpha=.3)
+nx.draw_networkx_labels(data, pos, alpha=1, font_color='black')
+nx.draw_networkx_edges(data, pos, font_size=8, arrows=True, alpha=.5, arrowsize=10, width=1, arrowstyle='-|>') #arrowsize=5, width=1, arrowstyle='-|>'
+nx.draw_networkx_edge_labels(data,pos,edge_labels=edge_labels, alpha=.5)
+plt.show()
