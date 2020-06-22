@@ -1,0 +1,15 @@
+// create nodes
+create (NodeName1:Person {name:'NodeName1'})
+create (NodeName2:Person {name:'NodeName2'})
+create (NodeName3:Person {name:'NodeName3'})
+create (NodeName4:Person {name:'NodeName4'})
+
+// find nodes
+match(a:Person) where a.name = "NodeName"
+match(b:Person) where b.name = "NodeName2"
+return a, b
+
+// find nodes and create edge
+MATCH (NodeName1:Person { name: 'NodeName1' }),(NodeName2:Person { name: 'NodeName2' })
+MERGE (NodeName1)-[r:knows]->(NodeName2)
+RETURN NodeName1, NodeName2
