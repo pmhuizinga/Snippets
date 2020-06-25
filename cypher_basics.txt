@@ -13,3 +13,10 @@ return a, b
 MATCH (NodeName1:Person { name: 'NodeName1' }),(NodeName2:Person { name: 'NodeName2' })
 MERGE (NodeName1)-[r:knows]->(NodeName2)
 RETURN NodeName1, NodeName2
+
+// get the longest path
+MATCH p=(start:node)-[:client_positions*1..10]->(end:node)
+//WHERE id(start) = 123 AND id(end) = 456
+RETURN p
+ORDER BY length(p) DESC
+LIMIT 1
