@@ -15,8 +15,23 @@ MERGE (NodeName1)-[r:knows]->(NodeName2)
 RETURN NodeName1, NodeName2
 
 // get the longest path
-MATCH p=(start:node)-[:client_positions*1..10]->(end:node)
+MATCH p=(start:node)-[:relation_type*1..10]->(end:node)
 //WHERE id(start) = 123 AND id(end) = 456
 RETURN p
 ORDER BY length(p) DESC
 LIMIT 1
+
+// all nodes and edges
+match(n) return n
+
+// conditional select on node type
+MATCH p=(n)-[r]-(m)
+where (n:nodetype1 or n:nodetype2) and (n:nodetype1 or n:nodetype2)
+return p
+
+or
+
+match p = (n)-[r]->(m)
+where n.type IN ['nodetype1', 'nodetype2'] 
+and m.type IN ['nodetype1', 'nodetype2']
+return p
