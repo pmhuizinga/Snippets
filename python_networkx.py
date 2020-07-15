@@ -89,6 +89,7 @@ for node, attr in node_attrs.items():
     elif attr == 'more test nodes':
         color = 'red'
 
+        
     node_colors.append(color)
 
 edge_labels=dict([((u,v,),d['type']) for u,v,d in data.edges(data=True)])
@@ -107,3 +108,10 @@ G_erdos = nx.erdos_renyi_graph(n,p, seed =100)
 plt.figure(figsize=(12,8))
 nx.draw(G_erdos, node_size=10)
 
+# degrees
+d = list(G.degree())
+keys = list(np.array(d)[:,0])
+vals = list(np.array(d)[:,1])
+df = pd.DataFrame({'model': keys, 'degree': vals})
+df['degree'] = pd.to_numeric(df['degree'])
+  
