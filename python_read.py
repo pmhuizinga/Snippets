@@ -34,7 +34,7 @@ def read_data(file, sheet):
     return df
 
 # read SQL
-engine="mssql://<server>\<server2>/<database name>?trusted_connection=yes;driver=SQL+Server"
+engine="mssql://<server>/<database name>?trusted_connection=yes;driver=SQL+Server"
 qry = "select column from table"
 df = pd.read_sql_query(qry, con=engine, parse_dates=None)
 
