@@ -15,7 +15,7 @@ select	ISNULL(column, alternative column)
 From	table
 
 -- COALESCE function: Return the first non-null value in a list
-select	ISNULL(column1, column2, column3)
+select	COALESCE(column1, column2, column3)
 From	table
 
 -- OVER, PARTITION BY: for calculating running totals
