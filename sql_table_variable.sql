@@ -1,4 +1,4 @@
--- create temporary table
+-- create as variable (instead of a temporary table)
 
 DECLARE @tablename table
 	(
