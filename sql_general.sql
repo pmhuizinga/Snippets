@@ -1,9 +1,15 @@
--- LAG function: get the previous value in the current record
-select	column1
-  	,column2
-	,lag(column3,1) over (order by column1, columns2) as PreviousValue
-From	table
-
+-- WINDOWS FUNCTIONS:
+select 	row_number() over () rn,
+       	rank() over () rnk,
+       	dense_rank() over () dns_rnk,
+       	lead(p.name) over () lead_name,
+       	lag(p.name) over () lag_name, 		--get the previous value in the current record
+       	first_value(p.name) over () fv_name,
+       	last_value(p.name) over () lv_name,
+       	ntile(4) over () quartile,
+       	ntile(5) over () quintile
+  from 	tabel
+  
 -- ISNULL function: in case of null replace with alternative value
 select	ISNULL(column, alternative column)
 From	table
