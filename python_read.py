@@ -65,6 +65,10 @@ list = [elem.tag for elem in root.iter()]
 # get unique xml tags
 set(list)
 
+# read from clipboard
+# copy from excel then ->
+pd.read_clipboard()
+
 
 
 
