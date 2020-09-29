@@ -35,3 +35,8 @@ match p = (n)-[r]->(m)
 where n.type IN ['nodetype1', 'nodetype2'] 
 and m.type IN ['nodetype1', 'nodetype2']
 return p
+
+// select where like
+start n = node(*) where n.name contains "<input>" return n.name, n;
+
+
