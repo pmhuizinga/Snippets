@@ -15,3 +15,4 @@ import sklearn					        machine learning
 import streamlit                interactive charts
 from pprint import pprint       pretty print
 from difflib import Differ      for file comparison
+import pandas-profiling         pandas dataframe analyses (statistics and more: https://pandas-profiling.github.io/)
