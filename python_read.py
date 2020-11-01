@@ -69,6 +69,15 @@ set(list)
 # copy from excel then ->
 pd.read_clipboard()
 
+# read dictionairy from config file
+# config file
+[GROUP]
+dict = {'level_1': {'item1': 'item'}, 'level_2': {'item1': 'item'}}
+# python file
+import ast  # for parsing string to dictionairy
+file_dict = ast.literal_eval(config['GROUP']['dict'])
+
+
 
 
 
