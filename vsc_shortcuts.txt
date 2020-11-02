@@ -1,0 +1,3 @@
+<ctrl> + <\>:           add file screen
+<ctrl> + <+>:           zoom
+<ctr> + <shift> + <e>:  execute query
