@@ -98,4 +98,9 @@ continents.forEach((continent, i) => {
 	    .text(continent)
 })
 
+// DATE AND TIME
+// from time value to text value
+var formatTime = d3.timeFormat("%B %d, %Y");
+// from text value to time value
+var parseTime = d3.timeParse("%B %d, %Y");
 
