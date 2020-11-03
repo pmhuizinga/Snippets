@@ -67,5 +67,35 @@ entity.enter().append(actions) 	add new
 // CODE HINTS
 const value = flag ? "profit" : "revenue" (if flag == false then revenue, else profit)
 
+// LEGENDS
+//color scheme
+const continentColor = d3.scaleOrdinal(d3.schemePastel1)
+		  
+// list of legend items
+const continents = ["europe", "asia", "americas", "africa"]
+
+// create group for legend 
+const legend = g.append("g")
+	.attr("transform", `translate(${WIDTH - 10}, ${HEIGHT - 125})`)
+
+// create legend, loop over each legend item and create new group item. Adjust y position using the iterator
+continents.forEach((continent, i) => {
+	const legendRow = legend.append("g")
+		.attr("transform", `translate(0, ${i * 20})`)
+	
+	// create rectangle and fill with appropiate color
+	legendRow.append("rect")
+	    .attr("width", 10)
+	    .attr("height", 10)
+			.attr("fill", continentColor(continent))
+	
+	// create text
+	legendRow.append("text")
+	    .attr("x", -10)
+	    .attr("y", 10)
+	    .attr("text-anchor", "end")
+	    .style("text-transform", "capitalize")
+	    .text(continent)
+})
 
 
