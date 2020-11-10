@@ -26,6 +26,10 @@ plt.axvline(np.quantile(df.index.values, .50), color='orange', label='label') # 
 plt.savefig('filename.png')
 plt.show()
 
+# or using seaborn
+sns.lineplot(x,y)
+plt.fill_between(x,y,alpha=0.4) # fill under line
+
 #------------------------------------------------------------------
 # basic bar chart
 plt.figure(figsize=(20,10))
