@@ -21,6 +21,10 @@ RETURN p
 ORDER BY length(p) DESC
 LIMIT 1
 
+// select path from a to b
+match x = (a:node)-[r:relation_type*..]->(b:node {name:'node name'}) 
+return x
+
 // all nodes and edges
 match(n) return n
 
