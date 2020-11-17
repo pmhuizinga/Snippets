@@ -104,3 +104,18 @@ var formatTime = d3.timeFormat("%B %d, %Y");
 // from text value to time value
 var parseTime = d3.timeParse("%B %d, %Y");
 
+// LOADING MULTIPLE DATASETS
+var promises = [
+	d3.json("data/map.json"),
+	d3.json("data/example.json")
+	]
+Promise.all(promises).then(function(allData){
+	var map = allData[0];
+	var example = allData[1];
+	// do stuff
+}).catch(function(error){
+	// handle error
+	console.log(error);
+});
+	
+		   
