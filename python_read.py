@@ -16,6 +16,7 @@ with urllib.request.urlopen(url) as file:
 
     
 # read html 
+# use sheetname=None for all sheets
 df = pd.read_html('http://url.html',skiprows=4, header=0, decimal=',', thousands='.')
 
 # read excel
