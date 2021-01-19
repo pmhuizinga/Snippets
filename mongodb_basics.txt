@@ -1,0 +1,89 @@
+# install database
+www.mongodb.com
+install on c:/mongodb
+create c:/mongodb/data/db/
+craete c:/mongodb/log
+
+open cmd
+mongodb/bin> mongodb --directoryperdb --dbpath c:\mongodb\data\db --logpath c:\mongodb\log\mongo.log --logappend --rest --install
+mongodb/bin>net start mongodb
+
+# go to mongo shell
+mongodb/bin>mongo
+cls (clears all, new screen. not necessary)
+
+# show databases
+> show dbs
+
+# create database
+> use dbname
+
+# view current db
+> db
+
+# drop database
+> db.dropDatabase()
+
+# create user
+>db.createUser {
+  user.: "Paul",
+  pwd: "1234",
+  roles: ["readWrite", "dbAdmin"]
+};
+
+# create collection (like a table)
+>db.createCollection('customers')
+
+# show collections
+>show collections
+
+# create file
+>db.customers.create({first_name: "paul", last_name: "huizinga"});
+
+# find all itmes
+>db.customers.find()
+>db.customers.find().pretty() (this is more readable)
+
+# find where
+>db.customers.find({firstname: 'paul'})
+
+# find sort
+>db.customers.find().sort({firstname: 1}).pretty() (sort 1 = ascending, -1 = descending)
+
+# find count
+>db.customers.find().count()
+
+# find limit
+>db.customers.find().limit(2)
+
+# insert date
+>db.collection.insert(
+  {date: Date()}
+  )
+  
+ # find for each
+ >db.collection.find().forEach(function(doc) {print('Hello: ' + doc.first_name)})
+ }
+ 
+ # find single record
+ >db.collection.findOne({first_name: 'paul'})
+ 
+# insert relation (check this!!!)
+>db.collection.insert(
+  {user: {first_name: 'paul',
+          last_name: 'huizinga'}}
+  )
+
+# insert multiple
+>db.collection.insertMany(
+[{item 1}, {item 2}]
+)
+
+# update entire record
+>db.collection.upate({first_name: 'paul'}), 
+{first_name: 'paul',
+last_name: 'huizinga'},
+{
+upsert: true}   THIS WILL ADD A NEW RECORD IF IT DOES NOT ALREADY EXIST
+)
+)
