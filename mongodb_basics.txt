@@ -12,78 +12,41 @@ mongodb/bin>net start mongodb
 mongodb/bin>mongo
 cls (clears all, new screen. not necessary)
 
-# show databases
-> show dbs
+# DATABASE ACTIONS
+show databases: > show dbs
+create database: > use dbname
+view current db: > db
+drop database: > db.dropDatabase()
 
-# create database
-> use dbname
-
-# view current db
-> db
-
-# drop database
-> db.dropDatabase()
-
-# create user
+# SETTINGS ACTIONS
+create user:
 >db.createUser {
   user.: "Paul",
   pwd: "1234",
   roles: ["readWrite", "dbAdmin"]
 };
 
-# create collection (like a table)
->db.createCollection('customers')
+# COLLECTION ACTIONS
+create collection: >db.createCollection('customers')
+show collections: >show collections
 
-# show collections
->show collections
+# RECORD ACTIONS:
+# CREATE
+create: >db.customers.create({first_name: "paul", last_name: "huizinga"});
+insert date: >db.collection.insert({date: Date()})
+Insert relation: >db.collection.insert({user: {first_name: 'paul', last_name: 'huizinga'}})
+insert multiple: >db.collection.insertMany([{item 1}, {item 2}])
 
-# create file
->db.customers.create({first_name: "paul", last_name: "huizinga"});
-
-# find all itmes
->db.customers.find()
->db.customers.find().pretty() (this is more readable)
-
-# find where
->db.customers.find({firstname: 'paul'})
-
-# find sort
->db.customers.find().sort({firstname: 1}).pretty() (sort 1 = ascending, -1 = descending)
-
-# find count
->db.customers.find().count()
-
-# find limit
->db.customers.find().limit(2)
-
-# insert date
->db.collection.insert(
-  {date: Date()}
-  )
-  
- # find for each
- >db.collection.find().forEach(function(doc) {print('Hello: ' + doc.first_name)})
- }
+# READ
+find all itmes: >db.customers.find().pretty() (pretty makes it better readable)
+find where: >db.customers.find({firstname: 'paul'})
+find sort: >db.customers.find().sort({firstname: 1}).pretty() (sort 1 = ascending, -1 = descending)
+find count: >db.customers.find().count()
+find limit: >db.customers.find().limit(2)
+find for each: >db.collection.find().forEach(function(doc) {print('Hello: ' + doc.first_name)})
+find single record: >db.collection.findOne({first_name: 'paul'})
  
- # find single record
- >db.collection.findOne({first_name: 'paul'})
- 
-# insert relation (check this!!!)
->db.collection.insert(
-  {user: {first_name: 'paul',
-          last_name: 'huizinga'}}
-  )
 
-# insert multiple
->db.collection.insertMany(
-[{item 1}, {item 2}]
-)
+# UPDATE
+update entire record, create new if not exists: >db.collection.upate({first_name: 'paul'}), {first_name: 'paul', last_name: 'huizinga'},{upsert: true})
 
-# update entire record
->db.collection.upate({first_name: 'paul'}), 
-{first_name: 'paul',
-last_name: 'huizinga'},
-{
-upsert: true}   THIS WILL ADD A NEW RECORD IF IT DOES NOT ALREADY EXIST
-)
-)
