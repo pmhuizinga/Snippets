@@ -14,7 +14,7 @@ mongodb/bin> mongodb --directoryperdb --dbpath c:\mongodb\data\db --logpath c:\m
 mongodb/bin>net start mongodb
 
 # go to mongo shell
-mongodb/bin>mongo
+mongodb/bin>mongo (or ./mongo)
 cls (clears all, new screen. not necessary)
 
 # DATABASE ACTIONS
@@ -31,7 +31,7 @@ create database:
 # SETTINGS ACTIONS
 create user:
 >db.createUser {
-  user.: "Paul",
+  user: "Paul",
   pwd: "1234",
   roles: ["readWrite", "dbAdmin"]
 };
