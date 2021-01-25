@@ -65,6 +65,7 @@ find greater then: >db.collection.find({age: {$gt: 30}})
 find greater then or equal to: >db.collection.find({age: {$gte: 30}})
 find less then: >db.collection.find({age: {$lt: 30}})
 find less then or equal to: >db.collection.find({age: {$lte: 30}})
+
 # UPDATE
 update entire record, create new if not exists: >db.collection.upate({first_name: 'paul'}), {first_name: 'paul', last_name: 'huizinga'},{upsert: true})
 update record, keep existing properties: >db.collection.update({first_name: 'paul}, {$set: {gender: 'male}})
