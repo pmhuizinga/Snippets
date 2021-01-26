@@ -33,6 +33,10 @@ MATCH p=(n)-[r]-(m)
 where (n:nodetype1 or n:nodetype2) and (n:nodetype1 or n:nodetype2)
 return p
 
+// find where like
+match (a)-[r]-(b)
+where r.subject =~ '.*ItemToLookFor.*'
+return a, b
 or
 
 match p = (n)-[r]->(m)
