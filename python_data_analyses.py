@@ -21,3 +21,9 @@ df['column'].value_counts(normalize=True)
 # unique
 df['column'].unique() # items
 df['column'].nunique() # number of items
+
+# cumulative sum
+df['column'].cumsum()
+
+# contains
+df['column'].str.contains('item').sum()
