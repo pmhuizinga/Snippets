@@ -40,3 +40,8 @@ df = pd.melt(df,id_vars=['CADIS_PORTFOLIO_GROUP_CODE', 'AS_OF_DATE'],
                      value_vars=[‘col1’,’col2’],
                      var_name='TENOR',
                      value_name='VALUE')
+
+# select all object type columns
+df.select_dtypes(include='object').columns
+# select all non-object type columns
+df.select_dtypes(exclude='object').columns
