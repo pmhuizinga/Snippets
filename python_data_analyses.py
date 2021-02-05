@@ -33,3 +33,6 @@ df['column'].cumsum()
 
 # contains
 df['column'].str.contains('item').sum()
+                                                                  
+# correlation
+df.corr()
