@@ -11,6 +11,12 @@ df.sample(n=200)
 # group by
 df[['column1','column2']].groupby(['column1']).mean()
 df[['column1','column2','column3','column4']].groupby(['column1','column2']).agg(['mean','count']).sort_values(by=[('column3','mean')])
+df[['column1','column2','column3']].groupby(['column3']).agg({'column1':'mean', 'columns2': 'sum'})
+
+# pivot + round
+pd.crosstab(index=df['column1'], columns=df['column2'], values=df['column3]', aggfunc='mean').round(1)
+# or
+pd.pivot_table(data=df, index=['column1'], columns=['column2'], values=['column3'], aggfunc='mean').round(1)
 
 # where not + isin
 df[~df['column1'].isin([1,2,3])]
