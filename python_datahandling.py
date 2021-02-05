@@ -3,14 +3,16 @@
 # DATE AND TIME
 # convert to date
 df['datecolumn'] = pd.to_datetime(df['datecolumn'], format="%Y-%m-%d %H:%M:%S.0000000")
-df['datecolumn'] = df['datecolumn'].dt.date
 df['datecolumn'] = pd.to_datetime(df['datecolumn'])
 # or
 df['datecolumn'] = df['datecolumn'].astype("datetime64")
 # convert to time
 df['timecolumn'] = pd.to_datetime(df['timecolumn'],format= '%H:%M' ).dt.time
-# extract hour value in column
-df_scan['uur'] = df['datecolumn'].dt.hour
+# extract time parts
+df['hour'] = df['datecolumn'].dt.hour
+df['month'] = df['datecolumn'].dt.month
+df['month'] = df['datecolumn'].dt.month_name()
+df['day'] = df['datecolumn'].dt.day
 # all workingdays
 all_working_days = [d.strftime("%Y-%m-%d") for d in pd.date_range(start='1/1/2019', end='1/08/2019').to_datetime().date if d.isoweekday() <= 5]
 
