@@ -2,7 +2,7 @@
 
 # read csv
 # use low_memory in case of large files. Do check datatypes in that case.
-df_scan = pd.read_csv(filename, sep=';', decimal=",", header=None, low_memory=False) 
+df_scan = pd.read_csv(filename, sep=';', decimal=",", header=None, low_memory=False, parse_dates=['date column']) 
 
 
 # read json data into pandas dataframe
