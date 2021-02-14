@@ -13,6 +13,11 @@ df[['column1','column2']].groupby(['column1']).mean()
 df[['column1','column2','column3','column4']].groupby(['column1','column2']).agg(['mean','count']).sort_values(by=[('column3','mean')])
 df[['column1','column2','column3']].groupby(['column3']).agg({'column1':'mean', 'columns2': 'sum'})
 
+# transform: add new columns based on grouping
+df['new column'] = df.groupby('column1')['column2'].transform('sum')
+# transform: fill Nan with mean of grouped column
+df['column2'] = df.groupby('column1').transform(lambda x: x.fillna(x.mean()))
+
 # pivot + round
 pd.crosstab(index=df['column1'], columns=df['column2'], values=df['column3]', aggfunc='mean').round(1)
 # or
