@@ -13,6 +13,10 @@ open cmd
 mongodb/bin> mongodb --directoryperdb --dbpath c:\mongodb\data\db --logpath c:\mongodb\log\mongo.log --logappend --rest --install
 mongodb/bin>net start mongodb
 
+in powershell
+../bin> ./mongod (=server)
+../bin> ./mongo  (=shell)
+
 # go to mongo shell
 mongodb/bin>mongo (or ./mongo)
 cls (clears all, new screen. not necessary)
