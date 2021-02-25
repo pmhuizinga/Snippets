@@ -2,14 +2,25 @@
 //set static variables (width, height, svg, g, ax scaling, labels, axis
 //get data, include interval function, include update function
 //update function: include transition, element join, remove old elements, enter new elements
+//INSTALL npm
+//npm: local http server (node package manager van node.js)
+//npm install -g http-server
+//start server: http-server -c-1 (-c-1 = zonder caching)
 
 
 //DEBUGGING
 console.log("Text value:", variable)
 
-
-//ERRORHANDLING
-d3.json("data/ages.json")
+//READ
+//csv
+d3.csv("filename.csv")
+	.then(data => {
+		data.forEach(d => {
+            d.column1 = Number(d.column1)
+            d.column2 = Number(d.column2)
+    })
+//json (including errorhandling)
+d3.json("filename.json")
 	.then(data => {
 	<procedure>
 }).catch(error => {
