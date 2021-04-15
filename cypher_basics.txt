@@ -14,6 +14,10 @@ MATCH (NodeName1:Person { name: 'NodeName1' }),(NodeName2:Person { name: 'NodeNa
 MERGE (NodeName1)-[r:knows]->(NodeName2)
 RETURN NodeName1, NodeName2
 
+// delete edge
+MATCH (Nodename1:Person {name: 'Nodename1'})-[r:knows]-(:Nodename2 {name: "Nodename2"}) 
+DELETE r
+
 // get the longest path
 MATCH p=(start:node)-[:relation_type*1..10]->(end:node)
 //WHERE id(start) = 123 AND id(end) = 456
