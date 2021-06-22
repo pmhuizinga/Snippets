@@ -51,4 +51,16 @@ return p
 // select where like
 start n = node(*) where n.name contains "<input>" return n.name, n;
 
+// view node and relation properties and counts
+match (n)
+return "Node" as Type,labels(n) as Name,count(n) as Count
+union
+match ()-[r]->()
+return "Relationship" as Type,type(r) as Name, count(r) as Count
 
+// find shortest path
+match (a1:nodetype1), (a2:nodetype2), path = allshortestpaths ((a1)-[*]-(a2))
+where toLower(a1.name) contains "name 1"
+and toLower(a2.name) contains "name 2"
+return path
+limit 1;
