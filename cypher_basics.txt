@@ -64,3 +64,16 @@ where toLower(a1.name) contains "name 1"
 and toLower(a2.name) contains "name 2"
 return path
 limit 1;
+
+// What kind of nodes exist
+// Reporting on property and relationship counts per node.
+MATCH (n) 
+RETURN
+DISTINCT labels(n),
+count(*) AS SampleSize,
+avg(size(keys(n))) as Avg_PropertyCount,
+min(size(keys(n))) as Min_PropertyCount,
+max(size(keys(n))) as Max_PropertyCount,
+avg(size( (n)-[]-() ) ) as Avg_RelationshipCount,
+min(size( (n)-[]-() ) ) as Min_RelationshipCount,
+max(size( (n)-[]-() ) ) as Max_RelationshipCount
