@@ -1,0 +1,97 @@
+// replace
+REPLACE ([COLUMN], [LOOKUP VALUE], [REPLACE VALUE]
+
+// concatenate
+CONCAT([VALUE TO ADD], [COLUMN]
+or
+[VALUE TO ADD]||[COLUMN]||[VALUE TO ADD]
+
+// create file format
+CREATE FILE [FILE FORMAT NAME]
+TYPE = 'CSV' 
+COMPRESSION = 'AUTO' 
+FIELD_DELIMITER = '^' 
+RECORD_DELIMITER = '\n' 
+SKIP_HEADER = 0 
+FIELD_OPTIONALLY_ENCLOSED_BY = 'NONE' 
+TRIM_SPACE = FALSE 
+ERROR_ON_COLUMN_COUNT_MISMATCH = TRUE 
+ESCAPE = 'NONE' 
+ESCAPE_UNENCLOSED_FIELD = '\134' 
+DATE_FORMAT = 'AUTO' 
+TIMESTAMP_FORMAT = 'AUTO' 
+NULL_IF = ('\\N');
+
+// copy from (S3) stage to table
+COPY INTO [TARGET TABLE]
+FROM @S3_BUCKET/FOLDER/
+FILES = ('file name.txt')
+FILE_FORMAT = (FORMAT_NAME = [FILE FORMAT NAME])
+
+// select from (S3) stage
+SELECT $1 AS COLUMN1_NAME, $2 AS COLUMN2_NAME
+FROM @S3_BUCKET/FOLDER/file name.txt
+(FORMAT_NAME => [FILE FORMAT NAME])
+
+// create sequence
+CREATE OR REPLACE SEQUENCE "[DATABASE]"."[SCHEMA]"."[SEQUENCE NAME]" 
+START 3 
+INCREMENT 1 
+COMMENT = '[COMMENT]';
+
+// select next sequence
+SELECT [SEQUENCE_NAME].nextval
+
+// insert records with sequence
+INSERT INTO [TABLE NAME]([COLUMN1],[COLUMN2]) 
+Values
+(SEQUENCE_NAME.nextval, 'VALUE 1', 'VALUE 2')
+
+// some JSON samples
+// Create an Ingestion Table for the NESTED JSON Data
+CREATE OR REPLACE TABLE "LIBRARY_CARD_CATALOG"."PUBLIC"."NESTED_INGEST_JSON" 
+(
+  "RAW_NESTED_BOOK" VARIANT
+);
+
+//Come back to this worksheet and run the examples shown in the video.
+SELECT RAW_NESTED_BOOK
+FROM NESTED_INGEST_JSON;
+
+SELECT RAW_NESTED_BOOK:year_published
+FROM NESTED_INGEST_JSON;
+
+SELECT RAW_NESTED_BOOK:authors
+FROM NESTED_INGEST_JSON;
+
+//try changing the number in the bracketsd to return authors from a different row
+SELECT RAW_NESTED_BOOK:authors[0].first_name
+FROM NESTED_INGEST_JSON;
+
+//Use these example flatten commands to explore flattening the nested book and author data
+SELECT value:first_name
+FROM NESTED_INGEST_JSON
+,LATERAL FLATTEN(input => RAW_NESTED_BOOK:authors);
+
+SELECT value:first_name
+FROM NESTED_INGEST_JSON
+,table(flatten(RAW_NESTED_BOOK:authors));
+
+//Add a CAST command to the fields returned
+SELECT value:first_name::VARCHAR, value:last_name::VARCHAR
+FROM NESTED_INGEST_JSON
+,LATERAL FLATTEN(input => RAW_NESTED_BOOK:authors);
+
+//Assign new column  names to the columns using "AS"
+SELECT value:first_name::VARCHAR AS FIRST_NM
+, value:last_name::VARCHAR AS LAST_NM
+FROM NESTED_INGEST_JSON
+,LATERAL FLATTEN(input => RAW_NESTED_BOOK:authors);
+
+
+
+
+
+
+
+
