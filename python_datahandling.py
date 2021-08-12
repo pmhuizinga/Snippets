@@ -45,3 +45,8 @@ df = pd.melt(df,id_vars=['CADIS_PORTFOLIO_GROUP_CODE', 'AS_OF_DATE'],
 df.select_dtypes(include='object').columns
 # select all non-object type columns
 df.select_dtypes(exclude='object').columns
+
+# Handle nulls
+pd.isnull(['value])
+           
+
