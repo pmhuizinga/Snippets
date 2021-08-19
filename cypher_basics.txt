@@ -77,3 +77,9 @@ max(size(keys(n))) as Max_PropertyCount,
 avg(size( (n)-[]-() ) ) as Avg_RelationshipCount,
 min(size( (n)-[]-() ) ) as Min_RelationshipCount,
 max(size( (n)-[]-() ) ) as Max_RelationshipCount
+
+// count nodes with more then one relation
+match (n)-[:relation]-(a) 
+with n, count(a) as rels, collect(a) as target_nodes
+where rels > 1
+return n, target_nodes, rels
