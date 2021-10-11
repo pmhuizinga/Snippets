@@ -85,3 +85,7 @@ match (n)-[:relation]-(a)
 with n, count(a) as rels, collect(a) as target_nodes
 where rels > 1
 return n, target_nodes, rels
+
+// search for nodes that connect to a specific node, add -- to the MATCH clause
+MATCH (a:typeA)--(b:typeB {name:'name'})
+RETURN * 
