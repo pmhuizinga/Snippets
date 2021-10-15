@@ -89,3 +89,8 @@ return n, target_nodes, rels
 // search for nodes that connect to a specific node, add -- to the MATCH clause
 MATCH (a:typeA)--(b:typeB {name:'name'})
 RETURN * 
+
+// exclude node labels
+match(n)
+where not n.labelname
+return n
