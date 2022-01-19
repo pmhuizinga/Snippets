@@ -92,5 +92,5 @@ RETURN *
 
 // exclude node labels
 match(n)
-where not n.labelname
+where not n:labelname
 return n
