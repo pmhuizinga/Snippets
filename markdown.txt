@@ -1,0 +1,11 @@
+header: # header 1, ## header 2
+
+bold: **this is bold**
+italic: *this is italic*
+
+list: 1. item1
+
+image: ![label](img/path_to_image.png)
+
+external link: [label](http://url.com)
+glossary link: [Term](glossary#term_in_dashed_lowercase)
