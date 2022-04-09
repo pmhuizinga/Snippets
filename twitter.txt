@@ -1,0 +1,32 @@
+in the search bar:
+from: person
+
+replies to:
+from: personA to: personB
+
+from a person on a topic:
+from: personA TopicA
+
+excluding:
+from: personA TopicA -TopicB
+
+selection based on retweets, faves or replies:
+min-retweets: x
+min_faves: x
+min_replies: x
+
+filter on type:
+filter:links
+filter: images
+filter:media
+
+filter on time:
+since:yyyy-mm-dd
+until:yyyy-mm-dd
+
+filter on location:
+near:Glasgow 
+within:10mi
+
+based on geo location and radius
+geocode: lat,long,50km
