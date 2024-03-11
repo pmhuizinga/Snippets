@@ -20,3 +20,16 @@ inner join	result
 )
 
 select * from recursive
+
+OF
+
+WITH RECURSIVE employee_hierarchy AS (
+    SELECT employee_id, first_name, last_name, manager_id
+    FROM employees
+    WHERE manager_id IS NULL
+    UNION ALL
+    SELECT e.employee_id, e.first_name, e.last_name, e.manager_id
+    FROM employees e
+    INNER JOIN employee_hierarchy eh ON e.manager_id = eh.employee_id
+)
+SELECT * FROM employee_hierarchy;
