@@ -9,6 +9,16 @@ select 	row_number() over () rn,
        	ntile(4) over () quartile,
        	ntile(5) over () quintile
   from 	tabel
+
+-- RANK
+SELECT employee_id, salary,
+       RANK() OVER (PARTITION BY department_id ORDER BY salary DESC) AS salary_rank
+FROM employees;	
+
+-- SUM
+SELECT employee_id, salary,
+       SUM(salary) OVER (ORDER BY employee_id ROWS BETWEEN 1 PRECEDING AND 1 FOLLOWING) AS salary_sum
+FROM employees;
   
 -- ISNULL function: in case of null replace with alternative value
 select	ISNULL(column, alternative column)
@@ -28,3 +38,8 @@ from	table
 select	column1
 	,count(*) FILTER (WHERE column2 = ?) as column3
 from	table
+
+-- GROUPING SETS
+SELECT department_id, job_id, SUM(salary) AS total_salary
+FROM employees
+GROUP BY GROUPING SETS ((department_id), (department_id, job_id));
