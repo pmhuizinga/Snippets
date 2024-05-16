@@ -3,6 +3,9 @@ from pyspark.sql import SparkSession
 from pyspark.sql import Row
 from pyspark.sql.functions import current_date, current_timestamp
 
+# Create SparkSession
+spark = SparkSession.builder.appName('fill in a name').getOrCreate()
+
 # Read from SQL endpoint
 df = spark.sql("SELECT * FROM BRONZE_LH.AFAS_BI_Medewerker_Functie LIMIT 1000")
 display(df)
