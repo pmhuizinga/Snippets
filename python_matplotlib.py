@@ -29,6 +29,16 @@ plt.show()
 # or using seaborn
 sns.lineplot(x,y)
 plt.fill_between(x,y,alpha=0.4) # fill under line
+#------------------------------------------------------------------
+
+# Clean up axes labels
+axes_fonts = {'fontsize': 12, 'fontweight': 'bold'}
+ax.set_xlabel('Purchase Frequency (#)', fontdict=axes_fonts)
+ax.set_ylabel('Purchase Amount ($)', fontdict=axes_fonts)
+
+# Clean up axes values
+ax.set_ylim(0, y.max() + 20)
+ax.set_xlim(0, x.max() + 2)
 
 #------------------------------------------------------------------
 # basic bar chart
